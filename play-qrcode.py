@@ -7,12 +7,11 @@ from uuid import UUID
 from mpd import MPDClient
 
 import zbar
-from kintoclient import Bucket
+from kintoclient import Collection
 
-bucket = Bucket('mpd-box',
-                server_url='https://kinto.dev.mozaws.net/v1',
-                load=False)
-shingle = bucket.get_collection('shingle', load=False)
+shingle = Collection('shingle', bucket="mpd-box",
+                     server_url='https://kinto.dev.mozaws.net/v1',
+                     load=False)
 
 song_id = None
 client = MPDClient()
