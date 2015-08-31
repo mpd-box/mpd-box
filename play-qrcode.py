@@ -1,16 +1,18 @@
 #!/usr/bin/python
+import hashlib
 import os
 import sys
+from uuid import UUID
 
 from mpd import MPDClient
 
 import zbar
+from kintoclient import Bucket
 
-
-SONGS = {
-    '1': 'Sinsemilia/resistances/la flamme.mp3',
-    '2': 'Virginie/Dreamer/10 - Un peu de moi.mp3'
-}
+bucket = Bucket('mpd-box',
+                server_url='https://kinto.dev.mozaws.net/v1',
+                load=False)
+shingle = bucket.get_collection('shingle', load=False)
 
 song_id = None
 client = MPDClient()
@@ -40,14 +42,26 @@ def mpd_handler(proc, image, _):
 
     for symbol in image:
         number = symbol.data
-        if number in SONGS:
-            track = SONGS[number]
+        print number
+        track_id = str(UUID(hashlib.md5(number).hexdigest()))
+        track_id = track_id[0:14] + '4' + track_id[15:19] + '8' + track_id[20:]
+        try:
+            track = shingle.get_record(track_id).data['uri']
+        except Exception as e:
+            import traceback
+            traceback.print_exc()
+            sys.exit(1)
+        else:
             client.connect('localhost', 6600)
             current_pos = client.status()['song']
             if song_id:
                 client.deleteid(song_id)
-            song_id = client.addid(track, current_pos)
-            client.playid(song_id)
+            try:
+                song_id = client.addid(track, current_pos)
+            except Exception as e:
+                print "An error occured: %s" % e
+            else:
+                client.playid(song_id)
             client.disconnect()
 
 # on read, start the mpd handler.
