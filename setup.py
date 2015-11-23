@@ -10,8 +10,6 @@ with open(os.path.join(here, 'CHANGELOG.rst')) as f:
 
 requires = [
     'pyramid',
-    'pyramid_chameleon',
-    'pyramid_debugtoolbar',
     'waitress',
     'redis',
     'python-mpd2', # Python interface with MPD
@@ -19,7 +17,7 @@ requires = [
     ]
 
 setup(name='mpd-box',
-      version='0.8',
+      version='0.1',
       description='MPD-Box start a song in Music Player Daemon by simply scanning a NFC tag.',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
@@ -41,10 +39,6 @@ setup(name='mpd-box',
       install_requires=requires,
       tests_require=requires,
       test_suite="mpd_box",
-      entry_points="""\
-      [paste.app_factory]
-      main = mpd_box:manage
-      """,
       # Executable stuff :)
       scripts = [
           'scripts/mpd-box',
