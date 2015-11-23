@@ -5,41 +5,31 @@ Configuration
 
 MPD-Box use `python ConfigParser module <https://docs.python.org/2/library/configparser.html>`_ to store and read app config file.
 
-Default configuration is saved in ``mpd_box/config.ini``.
+Default configuration is saved in ``mpd_box/config.default.cfg`` but is override by ``~/.mpd-box.cfg``
+
+You can read default config file to learn about MPD-Box, but main properties are the followong :
 
 
 .. code-block:: bash
 
-	###
-	# app configuration
-	# http://docs.pylonsproject.org/projects/pyramid/en/1.5-branch/narr/environment.html
-	###
-
-	[mpd_box:manage]
-	use = egg:mpd_box
-
-	# TRUE FOR DEV
-	pyramid.reload_templates = false
-	pyramid.debug_authorization = false
-	pyramid.debug_notfound = false
-	pyramid.debug_routematch = false
-	pyramid.default_locale_name = en
-
-	# REMOVE FOR PROD
-	pyramid.includes =
-	    pyramid_debugtoolbar
-
+	[mpd_box]
+	# List of readers to activate
 	mpd_box.readers = 
 		mpd_box.readers.nfc.raspberry_explorer_board
 
+	# Port to access MPD-Box services
 	port = 6543
 
 	[mpd]
-	# redefine MPD port
+	# Redefine port to access MPD
 	# default : 6600
 	port = 6600
 
 	[redis]
-	# redefine Redis port
+	# Redefine port to access Redis
 	# default : 6379
 	port = 6379
+
+.. warning::
+
+	If run as administrator, ``~`` is relative to root user, probably ``/root``.

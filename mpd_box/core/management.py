@@ -25,7 +25,7 @@ def start_readers():
     logger = Logger().getLogger()
     config = Configuration()
 
-    readers = [var for var in config.iniFile.get('mpd_box:manage','mpd_box.readers').split('\n') if var]
+    readers = [var for var in config.iniFile.get('mpd_box','mpd_box.readers').split('\n') if var]
     logger.info(readers)
 
     # Dynamically load and start each reader in a thread
@@ -53,7 +53,7 @@ def start_server():
 
     logger.info('Starting pyramid')
 
-    config = Configurator(settings=settings.iniFile.items('mpd_box:manage'))
+    config = Configurator(settings=settings.iniFile.items('mpd_box'))
     config.add_route('current-tag-id', '/current-tag-id')
     config.add_route('tag', '/tag/{id}')
     config.add_view('mpd_box.server.views.TAGView')
@@ -62,7 +62,7 @@ def start_server():
     logger.info('Views are up to date')
 
     app = config.make_wsgi_app()
-    server = make_server('0.0.0.0', int(settings.iniFile.get('mpd_box:manage','port')), app)
+    server = make_server('0.0.0.0', int(settings.iniFile.get('mpd_box','port')), app)
 
     logger.info('Server is now running')
 

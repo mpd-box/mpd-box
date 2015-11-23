@@ -14,12 +14,12 @@ class Configuration(object):
     def __init__(self):
         
         iniFile = ConfigParser.ConfigParser()
-        iniFile.readfp(open(mpd_box.__path__[0] + '/config.ini'))
+        iniFile.read([mpd_box.__path__[0] + '/config.default.cfg', os.path.expanduser('~/.mpd-box.cfg')])
         # config.read(['site.cfg', os.path.expanduser('~/.myapp.cfg')])
 
         logger = logging.getLogger('mpd-box')
 
-        logger.info('Load init file. Sections [mpd_box:manage]')
-        logger.info(iniFile.items('mpd_box:manage'))
+        logger.info('Load init file. Sections [mpd_box]')
+        logger.info(iniFile.items('mpd_box'))
 
         self.iniFile = iniFile
