@@ -13,11 +13,10 @@ requires = [
     'waitress',
     'redis',
     'python-mpd2', # Python interface with MPD
-    'nxppy', # Python interface with Raspberry NFC Explorer Board drivers.
     ]
 
 setup(name='mpd-box',
-      version='0.1',
+      version='0.1.1',
       description='MPD-Box start a song in Music Player Daemon by simply scanning a NFC tag.',
       long_description=README + '\n\n' + CHANGES,
       classifiers=[
