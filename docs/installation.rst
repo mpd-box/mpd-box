@@ -35,7 +35,9 @@ MPD-Box
 pip
 ---
 
-It is not yet available on pip (will be soon) but for now you can install it using setup.py.
+.. code-block:: bash
+
+	pip install mpb-box
 
 setuptools
 --------------

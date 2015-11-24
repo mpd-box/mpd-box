@@ -5,6 +5,9 @@ API
 
 MPD-Box has two distinct API to use. First one is from MPD, other one is running on Pyramid and designed to manage tags.
 
+Cheatsheet
+==========
+
 MPD
 ---
 
@@ -20,14 +23,19 @@ MPD-Box has a RESTFull API to control tags.
 +----------+-------------------------------------------------+---------------------------------------------------------+
 | Method   | URI                                             | Description                                             |
 +==========+=================================================+=========================================================+
-| `GET`    | /info                                           | Retrieve MPD-box current status                         |
-+----------+-------------------------------------------------+---------------------------------------------------------+
-| `GET`    | /current-id                                     | Return current tag-id read by mpd-box                   |
+| `GET`    | :ref:`/current-id <api-tags>`                   | :ref:`Return current tag-id read by mpd-box <api-tags>` |
 +----------+-------------------------------------------------+---------------------------------------------------------+
 | **Tags**                                                                                                             |
 +----------+-------------------------------------------------+---------------------------------------------------------+
-| `GET`    | /tags/(tag_id)                                  | Retrieve a tag object                                   |
+| `POST`   | :ref:`/tag/(tag_id) <tag-post>`                 | :ref:`Create a tag <api-tags>`                          |
 +----------+-------------------------------------------------+---------------------------------------------------------+
-| `POST`   | /tags/(tag_id)                                  | Create a tag object                                     |
+| `GET`    | :ref:`/tag/(tag_id) <tag-get>`                  | :ref:`Retrieve an existing tag <api-tags>`              |
 +----------+-------------------------------------------------+---------------------------------------------------------+
 
+Full reference
+==============
+
+.. toctree::
+   :maxdepth: 1
+
+   references/tags
