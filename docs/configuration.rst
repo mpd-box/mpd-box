@@ -5,7 +5,7 @@ Configuration
 
 MPD-Box use `python ConfigParser module <https://docs.python.org/2/library/configparser.html>`_ to store and read app config file.
 
-Default configuration is saved in ``mpd_box/config.default.cfg`` but is override by ``~/.mpd-box.cfg``
+Default configuration is saved in ``mpd_box/config.default.cfg`` but is override by ``~/.mpd-box.cfg`` or ``/etc/mpd-box.cfg``
 
 You can read default config file to learn about MPD-Box, but main properties are the followong :
 
@@ -33,3 +33,4 @@ You can read default config file to learn about MPD-Box, but main properties are
 .. warning::
 
 	If run as administrator, ``~`` is relative to root user, probably ``/root``.
+	MPD-Box will first try to access local user config file and only if could not find it will try ``/etc/mpd-box.cfg``

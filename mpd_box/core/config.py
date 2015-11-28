@@ -12,9 +12,17 @@ class Configuration(object):
     __metaclass__ = Singleton
 
     def __init__(self):
+
+        files = []
+        files.append(mpd_box.__path__[0] + '/config.default.cfg')
         
+        if os.path.isfile(os.path.expanduser('~/.mpd-box.cfg')):
+            files.append(os.path.expanduser('~/.mpd-box.cfg'))
+        elif os.path.isfile(os.path.expanduser('/etc/.mpd-box.cfg')):
+            files.append(os.path.expanduser('/etc/mpd-box.cfg'))
+
         iniFile = ConfigParser.ConfigParser()
-        iniFile.read([mpd_box.__path__[0] + '/config.default.cfg', os.path.expanduser('~/.mpd-box.cfg')])
+        iniFile.read(files)
         # config.read(['site.cfg', os.path.expanduser('~/.myapp.cfg')])
 
         logger = logging.getLogger('mpd-box')
