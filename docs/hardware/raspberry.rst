@@ -42,3 +42,8 @@ Install MPD-Box
 
 Follow the instruction from the :ref:`installation section <installation>`. 
 You should then be able to use it now.
+
+Activate raspberry_explorer_board reader
+========================================
+
+Follow instruction from the :ref:`Raspberry Explorer Board Reader <raspberry_explorer_board>`.

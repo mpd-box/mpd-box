@@ -24,6 +24,8 @@ You can use ``mpc`` to verify your installation
 
 MPD should automatically start on start. If you installed it using a local configuration, make sure you did configure your ``.profile`` to launch it on login.
 
+MPD-Box does not manage your music yet. You need to configure a path in MPD and save some files in it. We recommand to create then a symbolic link to your medias and access a USB stick.
+
 Redis
 =====
 
@@ -35,12 +37,14 @@ MPD-Box
 pip
 ---
 
+You can use pip to install mpd-box.
+
 .. code-block:: bash
 
 	pip install mpb-box
 
 setuptools
---------------
+----------
 
 MPD-Box is available as a python module defined in ``setup.py`` on root folder. 
 Use git to clone code from github repository.
@@ -69,8 +73,8 @@ You should now be able to run mpd-box using command line.
 Next section is about how to configure and run mpd-box.
 
 
-Optional
-========
+Zeroconf (optional)
+====================
 
 It might be usefull installing `Ahari-daemon <http://avahi.org/>`_ to activate *zeroconf* and have an easy access from other devices.
 

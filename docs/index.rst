@@ -22,6 +22,7 @@ This documentation cover all technical aspects on server side.
    installation
    configuration
    run
+   readers
    api/index
    hardware/index
    faq

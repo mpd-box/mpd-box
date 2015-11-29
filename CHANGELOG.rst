@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.1.2 (2015-11-XX)
-------------------
+0.1.2 (not released yet)
+------------------------
 
 - Fix bug if config file does not exist
 
